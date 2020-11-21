@@ -1,0 +1,11 @@
+main {
+  min-height: 80vh;
+}
+
+header{
+  font-size: 1rem;
+}
+
+.header_brand{
+  font-size: 2rem;
+}
