@@ -9,3 +9,7 @@ header{
 .header_brand{
   font-size: 2rem;
 }
+
+.rating span{
+  margin: 0.1rem
+}
