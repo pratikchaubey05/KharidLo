@@ -13,3 +13,17 @@ header{
 .rating span{
   margin: 0.1rem
 }
+
+.listgroupitem{
+  background-color: #fff;
+  color: #444;
+}
+.listgroupitem:hover{
+  color: #444;
+}
+
+hr{
+    background-color:444;
+    border-width: 1px;
+    width:100%;
+}
