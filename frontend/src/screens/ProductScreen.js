@@ -1,11 +1,24 @@
-import React from "react";
+import React , {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {Row, Col, Image, ListGroup, Card, Button} from "react-bootstrap";
+import axios from "axios";
 import Rating from "../components/Rating";
-import Products from "../products" ;
+// import Products from "../products" ;
 
 function ProductScreen({match}){
- const product = Products.find(p => p._id === match.params.id);
+    
+    //  const product = Products.find(p => p._id === match.params.id); as we are going to fetch from backend this is not needed
+
+    const [product, setProduct] = useState({}) ;
+
+    useEffect(()=>{
+        // console.log(axios.get(`/api/products/${match.params.id}`));
+
+        axios.get(`/api/products/${match.params.id}`).then(({data})=>{
+            setProduct(data) ;
+        });     
+    });
+
     return(
      <>
          <Link className="btn btn-dark my-3 rounded" to="/"> &lt; Go Back </Link>

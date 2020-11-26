@@ -1,0 +1,14 @@
+{
+  "name": "kharidlo",
+  "version": "1.0.0",
+  "description": "An E-Commerce WebApp developed using MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "author": "PRATIK",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
