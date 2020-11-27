@@ -79,6 +79,6 @@ const products = [
   },
 ]
 
-//export default products;    As we are using node.js and havent installed ES6 supporting we have to use tradition method
+export default products;
 
-module.exports = products ;
+// module.exports = products ;  as we have updated our node.js to 14+ we can use ES6 feautures
