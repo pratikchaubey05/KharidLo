@@ -1,10 +1,15 @@
 import express from "express" ;
 import dotenv from "dotenv" ;
 import products from "./data/products.js" ;
+import connectDB from "./config/db.js" ;
 
+// dotenv.config is being used so that we can access .env file lets us use env vars.
 dotenv.config();    
-const app = express();
 
+// This is used to connect to our DB
+connectDB() ;
+
+const app = express();
 
 
 app.get("/", (req, res)=>{
