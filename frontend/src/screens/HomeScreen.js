@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {Row, Col} from "react-bootstrap";
 import Product from "../components/Product";
-import axios from "axios";
+import axios from "axios"; // axios is used to make http request
+
 // import products from "../products";     As from now we will be getting this from backend
 
 

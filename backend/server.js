@@ -1,7 +1,14 @@
+// This is the entrance of backend.
+// It is having initial routes handling.
+
 import express from "express" ;
 import dotenv from "dotenv" ;
-import products from "./data/products.js" ;
+
+// import products from "./data/products.js" ;  As now we are using DB to get data
 import connectDB from "./config/db.js" ;
+
+// This is to import middleware to handle product routes
+import productRoutes from "./routes/productRoutes.js";
 
 // dotenv.config is being used so that we can access .env file lets us use env vars.
 dotenv.config();    
@@ -15,16 +22,10 @@ const app = express();
 app.get("/", (req, res)=>{
     res.send("My API is running") ;
 }) ;
-// To get complete producrs list
-app.get("/api/products", (req, res)=>{
-    res.json(products) ;
-}) ;
 
-// to get specific product
-app.get("/api/products/:id", (req, res)=>{
-    const product = products.find(p => p._id === req.params.id) ;
-    res.json(product) ;
-}) ;
+//Middleware to handle product routes
+app.use("/api/products", productRoutes);
+
 
 const PORT = process.env.PORT || 5000 ;
 
