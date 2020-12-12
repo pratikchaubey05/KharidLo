@@ -13,6 +13,7 @@ import Product from "../models/productModel.js" ;
 // @access: Public
 router.get("/", asynchandler(async(req, res)=>{
     const products = await Product.find({}) ;
+    // throw new Error("Testing Error");
     res.json(products) ;
 }));
 
