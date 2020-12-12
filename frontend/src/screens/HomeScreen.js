@@ -1,24 +1,27 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Row, Col} from "react-bootstrap";
 import Product from "../components/Product";
-import axios from "axios"; // axios is used to make http request
-
-// import products from "../products";     As from now we will be getting this from backend
+import {listProducts} from "../actions/productActions";
 
 
 function HomeScreen(){
+
+    // As we are using hooks, we dont have to use highorder function connect() and dont need to map state to props.
+    const dispatch = useDispatch();
+
+    const productList = useSelector(state=> state.productList);
+    const {loading, error, products} = productList;
     
-    const [products, setProducts] = useState([]);
     // If running on local:  Here as the frontend is running one 3000 server and backend on 5000, here for URL given localhost is backend but as we are accessing it from frontend it gives error. so we need to add proxy in our package.json 
     useEffect(()=>{
-        axios.get("/api/products").then(({data})=>{
-            setProducts(data) ;
-        })
-    },[]);
+        dispatch(listProducts()) ;
+    },[dispatch]);
 
     return(
         <>
         <h1>Latest Products:</h1>
+        {loading ? <h2>Loading...</h2>:error?<h2>{error}</h2>:
         <Row>
             {products.map((product, i) => {
                 return(
@@ -26,7 +29,8 @@ function HomeScreen(){
                         <Product product={product} />
                     </Col>) 
             })}
-        </Row>
+        </Row>}
+        
         </>
     );
 }

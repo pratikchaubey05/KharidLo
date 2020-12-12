@@ -17,7 +17,7 @@ function ProductScreen({match}){
         axios.get(`/api/products/${match.params.id}`).then(({data})=>{
             setProduct(data) ;
         });     
-    },[]);
+    });
 
     return(
      <>

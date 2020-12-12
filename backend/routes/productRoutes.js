@@ -24,7 +24,9 @@ router.get("/:id", asynchandler(async(req, res)=>{
     if(product){
     res.json(product) ;
     }else{
-        res.status(404).json({message: "Product not found"}) ;
+        res.status(404);
+        throw new Error("Product Not Found!!!"); // As we are using custom error handler i.e., server.js->middlerware/errorMiddleware.js
+        // res.status(404).json({message: "Product not found"}) ;
     }
 })) ;
 
