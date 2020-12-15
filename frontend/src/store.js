@@ -8,11 +8,12 @@ import thunk from "redux-thunk" ;
 // To use devtools to check on States
 import {composeWithDevTools} from "redux-devtools-extension"; 
 //importing productsreducers
-import {productListReducer} from "./reducers/productReducers";
+import {productListReducer, productDetailsReducer} from "./reducers/productReducers";
 
 // All Reducers go here.
 const reducer = combineReducers({
     productList: productListReducer,
+    productDetails: productDetailsReducer
 });
 
 //Initiate state of store
