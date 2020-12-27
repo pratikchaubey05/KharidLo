@@ -8,8 +8,10 @@ import Message from "../components/Message";
 import {listProductDetails} from "../actions/productActions";
 
 function ProductScreen({match, history}){
-    const [qty, setQty] = useState(0);
+    const [qty, setQty] = useState(1);
     const dispatch = useDispatch();
+
+    //useSelector is used to get data from the store
     const productDetails = useSelector(state => state.productDetails);
     const {loading, error, product} = productDetails ;
 

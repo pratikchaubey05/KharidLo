@@ -28,3 +28,31 @@ hr{
     width:100%;
     margin-bottom: 0;
 }
+
+h1{
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2{
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+.shoppingCartItem{
+  color: #444;
+  background-color: white;
+}
+.shoppingCartItem:hover{
+  background-color: unset !important;
+  color: unset !important;
+}
+
+.shoppingCartSubtotal{
+  color: #444;
+  background-color: white;
+}
+.shoppingCartSubtotal:hover{
+  background-color: unset !important;
+  color: unset !important;
+}
