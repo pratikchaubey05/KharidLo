@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import Message from "../components/Message";
 import {Row, Col, ListGroup, Image, Form, Button, Card, ListGroupItem} from "react-bootstrap";
-import {addToCart} from "../actions/cartActions";
+import {addToCart, removeFromCart} from "../actions/cartActions";
 
 const CartScreen = ({match, location, history}) => {
     // 1) location is used to get qty from the URL. 2) history is used to redirect
@@ -21,7 +21,7 @@ const CartScreen = ({match, location, history}) => {
     
     // Handler for Removing any product from cart
     const removeFromCartHandler= (id)=>{
-        console.log(id);
+        dispatch(removeFromCart(id));
     }
 
     // Checkout Handler
