@@ -1,4 +1,5 @@
-// Main desc: Dedicated controllers to handle the functionality. This has been done to make code cleaner
+// Main desc: Functionality to fetch products or product by ID
+//Dedicated controllers to handle the functionality. This has been done to make code cleaner
 
 // desc: As mongoose returns promise and to Handle exception/error we want to avoid writting try and catch. hence this.
 import asynchandler from "express-async-handler" ;
