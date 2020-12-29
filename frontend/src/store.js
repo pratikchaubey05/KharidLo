@@ -12,7 +12,7 @@ import {productListReducer, productDetailsReducer} from "./reducers/productReduc
 //importing cartReducer
 import{cartReducer} from "./reducers/cartReducers";
 //importing userReducer
-import {userLoginReducer} from "./reducers/userReducers";
+import {userLoginReducer, userRegisterReducer} from "./reducers/userReducers";
 
 
 // All Reducers go here.
@@ -20,7 +20,8 @@ const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
     cart: cartReducer,
-    userLogin: userLoginReducer 
+    userLogin: userLoginReducer,
+    userRegister: userRegisterReducer
 });
 
 // getting cart data from local storage
