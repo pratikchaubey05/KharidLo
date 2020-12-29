@@ -11,21 +11,29 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {productListReducer, productDetailsReducer} from "./reducers/productReducers";
 //importing cartReducer
 import{cartReducer} from "./reducers/cartReducers";
+//importing userReducer
+import {userLoginReducer} from "./reducers/userReducers";
 
 
 // All Reducers go here.
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    userLogin: userLoginReducer 
 });
 
 // getting cart data from local storage
 const cartItemsFromStorage = localStorage.getItem("cartItems")? JSON.parse(localStorage.getItem("cartItems")): [];
 
+// getting user info from local storage
+const userInfoFromStorage = localStorage.getItem("userInfo")? JSON.parse(localStorage.getItem("userInfo")): null ;
+
+
 //Initiate state of store
 const initialState = {
-    cart: { cartItems: cartItemsFromStorage}
+    cart: { cartItems: cartItemsFromStorage},
+    userLogin: {userInfo: userInfoFromStorage}
 };
 
 //
