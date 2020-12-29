@@ -4,7 +4,8 @@
 // desc: As mongoose returns promise and to Handle exception/error we want to avoid writting try and catch. hence this.
 import asynchandler from "express-async-handler" ;
 import User from "../models/userModel.js" ;
-
+// To generate JWT
+import generateToken from "../utils/generateToken.js";
 
 // @desc: Auth user & get Token
 // @route: POST /users/login
@@ -16,11 +17,11 @@ const authUser = asynchandler(async (req, res) => {
     // if user exist and model method promise returns true...
     if(user && ( await user.matchPassword(password))){
         res.json({
-            _id: user.id,
+            _id: user._id,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            token: null
+            token: generateToken(user._id)
         })
     }else{
         res.status(401) ;  //401: unauthorized
@@ -28,4 +29,61 @@ const authUser = asynchandler(async (req, res) => {
     }
 });
 
-export {authUser} ;
+// @desc: Register New User
+// @route: POST /users
+// @access: Public
+const registerUser = asynchandler(async (req, res) => {
+    const {name, email, password} = req.body ;
+
+    const userExists = await User.findOne({email:email})
+
+    // checking if the account is registered with email id
+    if(userExists){
+        res.status(400); //400: Bad request
+        throw new Error("User Already Exists!!!");
+    }
+    
+    const user = await User.create({
+        name,
+        email,
+        password
+    });
+    if(user){
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
+            token: generateToken(user._id)
+        });  //201: Created something
+    }else{
+        res.status(400);
+        throw new Error("Invalid User Data!");
+
+    }
+});
+
+
+
+
+// @desc: Get User Profile
+// @route: GET /users/profile
+// @access: Public
+const getUserProfile = asynchandler(async (req, res) => {
+    const user = await User.findById(req.user._id)
+    //const user = req.user ;
+    if(user){
+        res.json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin
+        });
+    }else{
+        res.status(404);
+        throw new Error("User Not Found!!!");
+    }
+});
+
+
+export {authUser,registerUser, getUserProfile} ;

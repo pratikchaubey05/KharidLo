@@ -4,11 +4,15 @@
 
 import express from "express";
 const router = express.Router();
-import {authUser} from "../controller/userController.js";
-
+import {authUser,registerUser, getUserProfile} from "../controller/userController.js";
+// Middleware To Validate Token
+import {protect} from "../middleware/authMiddleware.js";
 
 // router.get("/", getProducts);  : We can do like this also but we will use Route() for chaining.
+
+router.route("/").post(registerUser) ;
 router.post("/login", authUser) ;
+router.route("/profile").get(protect, getUserProfile) ;
 
 export default router ;
 
