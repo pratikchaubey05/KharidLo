@@ -1,6 +1,6 @@
 // Action creators for Cart
 import axios from "axios";
-import {CART_ADD_ITEM, CART_REMOVE_ITEM} from "../constants/cartConstant.js";
+import {CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS} from "../constants/cartConstant.js";
 
 
 // we are using Thunk to get dispatch and make async call
@@ -36,5 +36,15 @@ export const removeFromCart = (id)=> async (dispatch, getState )=>{
     // Storing in local storage
     // code to get the state of storage is in store.js
     localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+}
 
+// Desc: Action creator for shipping address
+export const saveShippingAddress = (data)=> async (dispatch)=>{
+    dispatch({
+        type: CART_SAVE_SHIPPING_ADDRESS,
+        payload: data
+    });
+    // Storing in local storage
+    // code to get the state of storage is in store.js
+    localStorage.setItem("shippingAddress", JSON.stringify(data))   ;
 }
