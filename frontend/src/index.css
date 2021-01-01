@@ -27,6 +27,7 @@ hr{
     border-width: 1px;
     width:100%;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 h1{
@@ -53,6 +54,15 @@ h2{
   background-color: white;
 }
 .shoppingCartSubtotal:hover{
+  background-color: unset !important;
+  color: unset !important;
+}
+
+.placeOrder{
+  color: #444;
+  background-color: white;
+}
+.placeOrder:hover{
   background-color: unset !important;
   color: unset !important;
 }
