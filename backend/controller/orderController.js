@@ -55,7 +55,6 @@ const getOrderById = asynchandler(async (req, res) => {
 // @access Private
 
 const updateOrderToPaid = asynchandler(async (req, res) => {
-    // Populate() is being used to get data from another collection
     const order = await Order.findById(req.params.id);
 
     if(order){
@@ -78,4 +77,17 @@ const updateOrderToPaid = asynchandler(async (req, res) => {
 });
 
 
-export {addOrderItems, getOrderById, updateOrderToPaid} ;
+// @Desc   Get logged-in user orders
+// @route  GET /api/orders/myorders
+// @access Private
+
+const getMyOrders = asynchandler(async (req, res) => {
+    const orders = await Order.find({user: req.user._id});
+
+    res.json(orders);
+
+});
+
+
+
+export {addOrderItems, getOrderById, updateOrderToPaid, getMyOrders} ;

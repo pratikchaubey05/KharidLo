@@ -14,8 +14,7 @@ import{cartReducer} from "./reducers/cartReducers";
 //importing userReducer
 import {userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer} from "./reducers/userReducers";
 //importing order create Reducer, order details reducer
-import {orderCreateReducer, orderDetailsReducer, orderPayReducer} from "./reducers/orderReducers";
-
+import {orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducer} from "./reducers/orderReducers";
 
 // All Reducers go here.
 const reducer = combineReducers({
@@ -28,7 +27,8 @@ const reducer = combineReducers({
     userUpdateProfile: userUpdateProfileReducer,
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
-    orderPay: orderPayReducer
+    orderPay: orderPayReducer,
+    orderListMy : orderListMyReducer
 });
 
 // getting cart data from local storage
