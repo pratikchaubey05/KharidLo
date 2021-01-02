@@ -12,6 +12,10 @@ import connectDB from "./config/db.js" ;
 import productRoutes from "./routes/productRoutes.js";
 // This is to import middleware to handle users routes
 import userRoutes from "./routes/userRoutes.js";
+// This is to import middleware to handle orders routes
+import orderRoutes from "./routes/orderRoutes.js";
+
+
 
 // dotenv.config is being used so that we can access .env file lets us use env vars.
 dotenv.config();    
@@ -31,6 +35,8 @@ app.get("/", (req, res)=>{
 app.use("/api/products", productRoutes);
 //Middleware to handle users routes
 app.use("/api/users", userRoutes);
+//Middleware to handle order routes
+app.use("/api/orders", orderRoutes);
 
 
 //Error Handler for 404: This should be last non-error-handler, due to which we assume that no other routes matched.
