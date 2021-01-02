@@ -38,6 +38,8 @@ app.use("/api/users", userRoutes);
 //Middleware to handle order routes
 app.use("/api/orders", orderRoutes);
 
+//  Desc: Get request for PAYPAL_client_id
+app.get("/api/config/paypal", (req, res) => res.send(process.env.PAYPAL_CLIENT_ID));
 
 //Error Handler for 404: This should be last non-error-handler, due to which we assume that no other routes matched.
 app.use(notFound);
