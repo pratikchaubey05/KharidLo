@@ -13,6 +13,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/product/:id" component={ProductScreen} />
         {/* Here in Location id? question mark makes ID optional */}
         <Route path="/cart/:id?" component={CartScreen} />
+        <Route path="/order/:id?" component={OrderScreen} />
       </Container>
      </main>
      <Footer />

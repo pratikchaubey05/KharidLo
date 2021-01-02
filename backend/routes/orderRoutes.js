@@ -4,11 +4,13 @@
 
 import express from "express";
 const router = express.Router();
-import {addOrderItems} from "../controller/orderController.js";
+import {addOrderItems, getOrderById} from "../controller/orderController.js";
 import {protect} from "../middleware/authMiddleware.js";
 
 // router.get("/", getProducts);  : We can do like this also but we will use Route() for chaining.
 router.route("/").post(protect, addOrderItems) ;
+// Put the below route at the bottom as if any routes has param it may take it as id
+router.route("/:id").get(protect, getOrderById);
 
 export default router ;
 

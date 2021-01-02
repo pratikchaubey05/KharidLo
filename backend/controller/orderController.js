@@ -32,4 +32,23 @@ const addOrderItems = asynchandler(async (req, res) => {
     }
 });
 
-export {addOrderItems} ;
+
+// @Desc   Get order by Id
+// @route  GET /api/orders/:id
+// @access Private
+
+const getOrderById = asynchandler(async (req, res) => {
+    // Populate() is being used to get data from another collection
+    const order = await Order.findById(req.params.id).populate("user", "name email");
+
+    if(order){
+        res.json(order);
+    }else{
+        res.status(404);
+        throw new Error("Order Not Found!");
+    }
+
+});
+
+
+export {addOrderItems, getOrderById} ;
