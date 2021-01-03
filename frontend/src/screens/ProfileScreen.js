@@ -86,7 +86,7 @@ const ProfileScreen = ({location, history}) => {
                 <Col md={9}>
                     <h2>My Orders</h2>
                     {loadingOrders? <Loader /> : errorOrders ? <Message variant="danger">{errorOrders}</Message>: (
-                        <Table stripped bordered hover responsive className="table-sm">
+                        <Table striped bordered hover responsive className="table-sm">
                             <thead>
                                 <tr>
                                     <th>ID</th>

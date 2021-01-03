@@ -6,6 +6,8 @@ export const USER_LOGOUT = "USER_LOGOUT";
 export const USER_REGISTER_REQUEST = "USER_REGISTER_REQUEST";
 export const USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS";
 export const USER_REGISTER_FAIL = "USER_REGISTER_FAIL";
+//after logout resetting the register state
+export const USER_REGISTER_RESET = "USER_REGISTER_RESET";
 
 export const USER_DETAILS_REQUEST = "USER_DETAILS_REQUEST";
 export const USER_DETAILS_SUCCESS = "USER_DETAILS_SUCCESS";
@@ -24,3 +26,8 @@ export const USER_LIST_SUCCESS = "USER_LIST_SUCCESS";
 export const USER_LIST_FAIL = "USER_LIST_FAIL";
 //after logout
 export const USER_LIST_RESET = "USER_LIST_RESET";
+
+// User list for admin page
+export const USER_DELETE_REQUEST = "USER_DELETE_REQUEST";
+export const USER_DELETE_SUCCESS = "USER_DELETE_SUCCESS";
+export const USER_DELETE_FAIL = "USER_DELETE_FAIL";
