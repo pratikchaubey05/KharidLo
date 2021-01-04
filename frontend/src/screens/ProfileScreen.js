@@ -30,12 +30,11 @@ const ProfileScreen = ({location, history}) => {
     // get state of all the orders
     const orderListMy = useSelector((state)=> state.orderListMy);
     const {loading: loadingOrders, error: errorOrders, orders} = orderListMy ;
-
     useEffect(()=>{
         if(!userInfo){
             history.push("/login");
         }else{
-            if(!user.name){
+            if(!user.name || user._id !== userInfo._id){
                 dispatch(getUserDetails("profile"));
                 dispatch(listMyOrders());
             }else{

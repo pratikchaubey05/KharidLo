@@ -8,7 +8,7 @@ import thunk from "redux-thunk" ;
 // To use devtools to check on States
 import {composeWithDevTools} from "redux-devtools-extension"; 
 //importing productsreducers
-import {productListReducer, productDetailsReducer} from "./reducers/productReducers";
+import {productListReducer, productDetailsReducer, productDeleteReducer} from "./reducers/productReducers";
 //importing cartReducer
 import{cartReducer} from "./reducers/cartReducers";
 //importing userReducer
@@ -20,6 +20,7 @@ import {orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyRed
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
+    productDelete: productDeleteReducer,
     cart: cartReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
