@@ -4,14 +4,14 @@
 
 import express from "express";
 const router = express.Router();
-import {getProductById, getProducts, deleteProduct} from "../controller/productController.js";
+import {getProductById, getProducts, deleteProduct,createProduct, updateProduct} from "../controller/productController.js";
 // Middleware To Validate Token
 import {protect, admin} from "../middleware/authMiddleware.js";
 
 
 // router.get("/", getProducts);  : We can do like this also but we will use Route() for chaining.
-router.route("/").get(getProducts) ;
-router.route("/:id").get(getProductById).delete(protect, admin, deleteProduct) ;
+router.route("/").get(getProducts).post(protect, admin, createProduct) ;
+router.route("/:id").get(getProductById).delete(protect, admin, deleteProduct).put(protect, admin, updateProduct) ;
 
 export default router ;
 

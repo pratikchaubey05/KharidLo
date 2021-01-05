@@ -7,7 +7,11 @@ import {PRODUCT_LIST_REQUEST,
         PRODUCT_DETAILS_FAIL,
         PRODUCT_DELETE_REQUEST,
         PRODUCT_DELETE_SUCCESS,
-        PRODUCT_DELETE_FAIL
+        PRODUCT_DELETE_FAIL,
+        PRODUCT_CREATE_REQUEST,
+        PRODUCT_CREATE_RESET,
+        PRODUCT_CREATE_SUCCESS,
+        PRODUCT_CREATE_FAIL
 } from "../constants/productConstants.js";
 
 export const productListReducer = (state = { products:[] }, action) => {
@@ -49,6 +53,23 @@ export const productDeleteReducer = (state = {}, action) => {
             return { loading: false, success: true}
         case PRODUCT_DELETE_FAIL:
             return { loading: false, error: action.payload}
+        default: return state        
+    }
+}
+
+// Reducer for create product : Admin only
+
+export const productCreateReducer = (state = {}, action) => {
+    switch(action.type){
+        case PRODUCT_CREATE_REQUEST:
+            //loading:true so that component knows that its currently fetching
+            return { loading: true}
+        case PRODUCT_CREATE_SUCCESS:
+            return { loading: false, success: true, product: action.payload}
+        case PRODUCT_CREATE_FAIL:
+            return { loading: false, error: action.payload}
+        case PRODUCT_CREATE_RESET:
+            return {}            
         default: return state        
     }
 }

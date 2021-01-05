@@ -10,7 +10,10 @@ import {PRODUCT_LIST_REQUEST,
     PRODUCT_DETAILS_FAIL,
     PRODUCT_DELETE_REQUEST,
     PRODUCT_DELETE_SUCCESS,
-    PRODUCT_DELETE_FAIL
+    PRODUCT_DELETE_FAIL,
+    PRODUCT_CREATE_REQUEST,
+    PRODUCT_CREATE_SUCCESS,
+    PRODUCT_CREATE_FAIL
 } from "../constants/productConstants.js";
 
 //1) similar task what useffect did in homescreen component earlier
@@ -90,6 +93,41 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_DELETE_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        });
+    }
+}
+
+
+
+// DESC: Action creator to get create a product. Admin only
+export const createProduct = () => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: PRODUCT_CREATE_REQUEST
+        });
+
+        // destructuring state to get token
+        const {userLogin:{userInfo}} = getState();
+
+        // Sending data with a header, a content type of application/json 
+        // Also, pass Token for protected routes
+        const config = {
+            headers: {
+                Authorization : `Bearer ${userInfo.token}`
+            }
+        }
+        
+        const {data} = await axios.post(`/api/products`,{}, config) ;
+
+        dispatch({
+            type: PRODUCT_CREATE_SUCCESS,
+            payload:data
+        })
+        
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_CREATE_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         });
     }
