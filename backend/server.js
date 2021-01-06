@@ -2,6 +2,7 @@
 // It is having initial routes handling.
 
 import express from "express" ;
+import path from "path";
 import dotenv from "dotenv" ;
 import {notFound, errorHandler} from "./middleware/errorMiddleware.js";
 
@@ -14,6 +15,8 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 // This is to import middleware to handle orders routes
 import orderRoutes from "./routes/orderRoutes.js";
+// This is to import middleware to handle upload routes
+import uploadRoutes from "./routes/uploadRoutes.js";
 
 
 
@@ -37,9 +40,17 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 //Middleware to handle order routes
 app.use("/api/orders", orderRoutes);
+//Middleware to handle upload image route
+app.use("/api/upload", uploadRoutes) ;
+
 
 //  Desc: Get request for PAYPAL_client_id
 app.get("/api/config/paypal", (req, res) => res.send(process.env.PAYPAL_CLIENT_ID));
+
+// As we are using es module we cannot directly use __dirname so we use path.resolve to get directory
+const __dirname = path.resolve(); 
+// to make uploads folder static and accessible
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 //Error Handler for 404: This should be last non-error-handler, due to which we assume that no other routes matched.
 app.use(notFound);
