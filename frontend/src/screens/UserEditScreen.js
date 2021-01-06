@@ -1,4 +1,4 @@
-// DESC: This is the Registration Screen
+// DESC: This is the User edit Screen
 import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {Form, Button} from "react-bootstrap";
