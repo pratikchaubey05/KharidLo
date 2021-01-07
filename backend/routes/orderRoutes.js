@@ -4,15 +4,17 @@
 
 import express from "express";
 const router = express.Router();
-import {addOrderItems, getOrderById, updateOrderToPaid, getMyOrders} from "../controller/orderController.js";
-import {protect} from "../middleware/authMiddleware.js";
+import {addOrderItems, getOrderById, updateOrderToPaid, getMyOrders, getOrders, updateOrderToDelivered} from "../controller/orderController.js";
+import {protect, admin} from "../middleware/authMiddleware.js";
 
 // router.get("/", getProducts);  : We can do like this also but we will use Route() for chaining.
-router.route("/").post(protect, addOrderItems) ;
+router.route("/").post(protect, addOrderItems).get(protect, admin, getOrders) ;
 // To display all the orders of the loggedin user
 router.route("/myorders").get(protect, getMyOrders) ;
 // updating the order details with paid
 router.route("/:id/pay").put(protect, updateOrderToPaid);
+// updating the order details with delivered
+router.route("/:id/deliver").put(protect, admin,  updateOrderToDelivered);
 // Put the below route at the bottom as if any routes has param it may take it as id
 router.route("/:id").get(protect, getOrderById);
 

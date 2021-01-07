@@ -18,3 +18,15 @@ export const ORDER_LIST_MY_FAIL = "ORDER_LIST_MY_FAIL";
 
 // After Logout profile should get reset
 export const ORDER_LIST_MY_RESET = "ORDER_LIST_MY_RESET";
+
+// Get all orders. Admin Only
+export const ORDER_LIST_REQUEST = "ORDER_LIST_REQUEST";
+export const ORDER_LIST_SUCCESS = "ORDER_LIST_SUCCESS";
+export const ORDER_LIST_FAIL = "ORDER_LIST_FAIL";
+// export const ORDER_LIST_RESET = "ORDER_LIST_RESET";
+
+// Update order to delivered. Admin Only
+export const ORDER_DELIVER_REQUEST = "ORDER_DELIVER_REQUEST";
+export const ORDER_DELIVER_SUCCESS = "ORDER_DELIVER_SUCCESS";
+export const ORDER_DELIVER_FAIL = "ORDER_DELIVER_FAIL";
+export const ORDER_DELIVER_RESET = "ORDER_DELIVER_RESET";

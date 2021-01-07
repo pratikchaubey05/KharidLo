@@ -1,4 +1,4 @@
-// DESC: List of all Users displayed for Admin
+// DESC: List of all Products displayed for Admin
 import React, { useEffect} from "react";
 import {LinkContainer} from "react-router-bootstrap";
 import {Table, Button, Row, Col} from "react-bootstrap";
