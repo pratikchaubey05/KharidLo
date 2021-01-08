@@ -1,8 +1,11 @@
 import React from "react" ;
+// Bringing react-router-dom for accessing history prop
+import {Route} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {LinkContainer} from "react-router-bootstrap" ;
 import {Container, Navbar, Nav, NavDropdown} from "react-bootstrap";
 import {logout} from "../actions/userActions";
+import SearchBox from "./SearchBox";
 
 function Header(){
     const dispatch= useDispatch();
@@ -19,7 +22,9 @@ function Header(){
                 <LinkContainer to="/">
                     <Navbar.Brand className="header_brand" >KharidLo</Navbar.Brand>
                 </LinkContainer>
-            
+                {/* DESC: To get access to history in searchbox coponent we use render prop */}
+                <Route render={({history})=><SearchBox history={history} />} />
+
                 {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav"> */}
                 <Nav className="ml-auto">

@@ -7,7 +7,9 @@ import Message from "../components/Message";
 import {listProducts} from "../actions/productActions";
 
 
-function HomeScreen(){
+function HomeScreen({match}){
+    const keyword = match.params.keyword ;
+
 
     // As we are using hooks, we dont have to use highorder function connect() and dont need to map state to props.
     const dispatch = useDispatch();
@@ -17,8 +19,8 @@ function HomeScreen(){
     
     // If running on local:  Here as the frontend is running one 3000 server and backend on 5000, here for URL given localhost is backend but as we are accessing it from frontend it gives error. so we need to add proxy in our package.json 
     useEffect(()=>{
-        dispatch(listProducts()) ;
-    },[dispatch]);
+        dispatch(listProducts(keyword)) ;
+    },[dispatch, keyword]);
 
     return(
         <>

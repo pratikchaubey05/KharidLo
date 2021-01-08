@@ -26,13 +26,13 @@ import {PRODUCT_LIST_REQUEST,
 //2)  Below function is an action creator. 
 //3) Above constant "PRODUCT_LIST_REQUEST" are actual actions that we dispatch to reducer
 //4) we make async request using redux-thunk. It allows to add a function within a function. so that it can return a function instead of action object, to carry out async task and give access to dispatch and getState of redux store
-export const listProducts = () => async (dispatch)=>{
+export const listProducts = (keyword="") => async (dispatch)=>{
     try {
         dispatch({
             type: PRODUCT_LIST_REQUEST
         });
         // fetching data from backend API.
-        const {data} = await axios.get("/api/products") ;
+        const {data} = await axios.get(`/api/products?keyword=${keyword}`) ;
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
             payload: data
