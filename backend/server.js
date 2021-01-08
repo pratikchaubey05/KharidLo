@@ -4,6 +4,7 @@
 import express from "express" ;
 import path from "path";
 import dotenv from "dotenv" ;
+import morgan from "morgan";
 import {notFound, errorHandler} from "./middleware/errorMiddleware.js";
 
 // import products from "./data/products.js" ;  As now we are using DB to get data
@@ -27,6 +28,12 @@ dotenv.config();
 connectDB() ;
 
 const app = express();
+
+// Here we are using morgan for loggin dev activities on console. We want to use it only in dev env. 
+if(process.env.NODE_ENV === "development"){
+    app.use(morgan("dev"));
+}
+
 // To use body parameters we need to parse it. This will allow us to access json data in the body
 app.use(express.json());
 
