@@ -6,7 +6,9 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Paginate from "../components/Paginate";
 import {listProducts} from "../actions/productActions";
+import Meta from "../components/Meta";
 import ProductCarousel from "../components/ProductCarousel" ;
+import {Link} from "react-router-dom";
 
 
 function HomeScreen({match}){
@@ -26,7 +28,8 @@ function HomeScreen({match}){
 
     return(
         <>
-        {!keyword && <ProductCarousel />}
+        <Meta />
+        {!keyword ? <ProductCarousel /> : <Link className="btn btn-dark my-3 rounded" to="/"> &lt; Go Back </Link> }
         <h1>Latest Products:</h1>
         {loading ? <Loader />:error?<Message variant="danger">{error}</Message>:(
         <>
