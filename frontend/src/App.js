@@ -33,16 +33,20 @@ function App() {
         <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/register" component={RegisterScreen} />
         <Route path="/profile" component={ProfileScreen} />
-        <Route path="/" component={HomeScreen} exact />
         <Route path="/product/:id" component={ProductScreen} />
         {/* Here in Location id? question mark makes ID optional */}
         <Route path="/cart/:id?" component={CartScreen} />
         <Route path="/admin/userlist" component={UserListScreen} />
         <Route path="/admin/user/:id/edit" component={UserEditScreen} />
-        <Route path="/admin/productlist" component={ProductListScreen} />
+        <Route path="/admin/productlist" component={ProductListScreen} exact />
+        <Route path="/admin/productlist/:pageNumber" component={ProductListScreen} exact />
+
         <Route path="/admin/orderlist" component={OrderListScreen} />
         <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
-        <Route path="/search/:keyword" component={HomeScreen} />
+        <Route path="/search/:keyword" component={HomeScreen} exact />
+        <Route path="/page/:pageNumber" component={HomeScreen} exact />
+        <Route path="/search/:keyword/page/:pageNumber" component={HomeScreen} exact />
+        <Route path="/" component={HomeScreen} exact />
         <Route path="/order/:id?" component={OrderScreen} />
       </Container>
      </main>
