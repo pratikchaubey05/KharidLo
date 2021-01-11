@@ -5,8 +5,9 @@ import {LinkContainer} from "react-router-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import {getUserDetails, updateUserProfile} from "../actions/userActions";
+import {getUserDetails, updateUser, updateUserProfile} from "../actions/userActions";
 import {listMyOrders} from "../actions/orderActions" ;
+import {USER_UPDATE_PROFILE_RESET} from "../constants/userConstants";
 
 const ProfileScreen = ({location, history}) => {
 
@@ -34,7 +35,8 @@ const ProfileScreen = ({location, history}) => {
         if(!userInfo){
             history.push("/login");
         }else{
-            if(!user.name || user._id !== userInfo._id){
+            if(!user.name || user._id !== userInfo._id || success){
+                dispatch({type: USER_UPDATE_PROFILE_RESET});
                 dispatch(getUserDetails("profile"));
                 dispatch(listMyOrders());
             }else{
@@ -42,7 +44,7 @@ const ProfileScreen = ({location, history}) => {
                 setEmail(user.email);
             }
         }
-    }, [dispatch, userInfo, history, user]);
+    }, [dispatch, userInfo, history, user, success]);
 
     const submitHandler = (e) =>{
         // so that page doesnt refresh
