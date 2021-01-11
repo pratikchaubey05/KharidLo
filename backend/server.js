@@ -37,10 +37,6 @@ if(process.env.NODE_ENV === "development"){
 // To use body parameters we need to parse it. This will allow us to access json data in the body
 app.use(express.json());
 
-app.get("/", (req, res)=>{
-    res.send("My API is running") ;
-}) ;
-
 //Middleware to handle product routes
 app.use("/api/products", productRoutes);
 //Middleware to handle users routes
@@ -50,7 +46,6 @@ app.use("/api/orders", orderRoutes);
 //Middleware to handle upload image route
 app.use("/api/upload", uploadRoutes) ;
 
-
 //  Desc: Get request for PAYPAL_client_id
 app.get("/api/config/paypal", (req, res) => res.send(process.env.PAYPAL_CLIENT_ID));
 
@@ -58,6 +53,19 @@ app.get("/api/config/paypal", (req, res) => res.send(process.env.PAYPAL_CLIENT_I
 const __dirname = path.resolve(); 
 // to make uploads folder static and accessible
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+// *DESC: For Deployment. Production env
+if(process.env.NODE_ENV === "production"){
+    // Adding build file of frontend(React) as static
+    app.use(express.static(path.join(__dirname, "/frontend/build"))); 
+    // * represent anything which is not equal to above api routes.
+    app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html")) ) ;
+}else{
+    app.get("/", (req, res)=>{
+        res.send("My API is running") ;
+    }) ;
+}
+
 
 //Error Handler for 404: This should be last non-error-handler, due to which we assume that no other routes matched.
 app.use(notFound);
