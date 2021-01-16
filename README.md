@@ -1,7 +1,8 @@
 # KharidLo
 
-KharidLo is an full fledged simple E-Commerce web-Application which is developed from scratch using MERN Stack.
+KharidLo is a full fledged simple E-Commerce web-Application which is developed from scratch using MERN Stack.
 The WebApp offers all the necessary working functionality which is necessary in an E-Commerce website with a simplistic UI design and easily understandable elements it provides a seamless operability experience. Ofcourse it has space and areas for improvement as it is a project in progress.
+(Mongoose is used as ODM).
 
 ## Demo
 Visit: https://kharidlo.herokuapp.com/
@@ -63,7 +64,5 @@ npm run data:import
 # Destroy data
 npm run data:destroy
 ```
-
-KharidLo project is intended to showcase MERN skills while learning and exploring the depths of full stack web development.
 
 ## THANK YOU!!!
